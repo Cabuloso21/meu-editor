@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Editor Principal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .logo {
+      color: red;
+      background: #333;
+      padding: 5px;
+      font-size: 25px;
+      font-weight: bold;
+      text-align: center;
+      border-bottom: 1px solid white;
+    }
+
+  
+  
+  
+  
+  
+  
+  
+  
+   #buttons {
+      display: flex;
+      background-color: none;
+      padding: 1px;
+      box-sizing: border-box;
+    }
+
+    #buttons button {
+      margin-right: 0px;
+    }
+
+    button {
+      margin: 1px;
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+
+  
+  
+  
+    input[type="file"] {
+      display: none;
+    }
+
+  
+  
+  
+   #editorContainer {
+      display: flex;
+      margin-top: 15px;
+      border: none;
+      border: 1px solid none;
+      overflow-x: auto; /* Permite rolagem horizontal se o conteúdo ultrapassar a largura */
+    }
+
+  
+
+     #editor {
+      width: calc(100% - 50px); /* Ajusta a largura do editor para compensar a lateral */
+      min-width: 500px; /* Largura mínima do editor para evitar redimensionamento excessivo */
+      height: 1000px;
+      border: none;
+      font-size: 15.60px;
+      padding: 5px;
+      resize: horizontal; /* Permite redimensionamento horizontal do editor */
+      
+      
+      
+      
+       white-space: nowrap;
+      overflow-x: auto;
+      outline: none;
+      
+     }    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   
+
+    #lineNumbers {
+      display: none;
+    }
+
+    @media only screen and (min-width: 768px) {
+      /* Estilos para telas maiores */
+      #editorContainer {
+        width: 70%;
+        margin: auto;
+      }
+
+      #lineNumbers {
+        display: block;
+        float: left;
+        padding: 2px;
+        background-color: #f0f0f0;
+        border-right: 1px solid #ccc;
+        text-align: right;
+        min-height: 300px; /* Ajuste conforme necessário */
+      }
+
+      #editor {
+        width: calc(100% - 60px); /* Considerando a largura dos números de linha */
+        min-height: 300px; /* Ajuste conforme necessário */
+        margin-left: 60px; /* Largura dos números de linha */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">Meu Editor Principal</div>
+
+  <div id="buttons">
+    <button onclick="runCode()">Executar</button>
+    <button onclick="deleteCode()">Excluir</button>
+    <input type="file" id="fileInput" accept=".html,.htm" multiple style="display: none;">
+    <button onclick="openFile()">Abrir Arquivo(s)</button>
+    <button onclick="saveToFile()">Salvar Como</button>
+  </div>
+
+  <div id="editorContainer">
+    <div id="lineNumbers"></div>
+    <div class="lineWithoutNumber"></div>
+    <textarea id="editor" oninput="updateLineNumbers()" onblur="saveCodeToLocalStorage()"></textarea>
+  </div>
+
+  <script>
+    var editor = document.getElementById("editor");
+    var fileInput = document.getElementById("fileInput");
+
+    // Atualizar código ao carregar do armazenamento local
+    if (localStorage.getItem("savedCode")) {
+      editor.value = localStorage.getItem("savedCode");
+    }
+
+    // Adicionar ouvinte de evento para salvar código antes de descarregar a página
+    window.addEventListener("beforeunload", saveCodeToLocalStorage);
+
+    function runCode() {
+      var code = editor.value;
+      var newWindow = window.open();
+      newWindow.document.write(code);
+      newWindow.document.close();
+      newWindow.focus();
+      localStorage.setItem("savedCode", code);
+    }
+
+    function deleteCode() {
+      if (confirm("Tem certeza de que deseja excluir o código?")) {
+        editor.value = "";
+        localStorage.removeItem("savedCode");
+      }
+    }
+
+    function openFile() {
+      fileInput.click();
+    }
+
+    fileInput.addEventListener("change", function (event) {
+      var files = event.target.files;
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          var contents = e.target.result;
+          editor.value += contents + '\n\n'; // Adiciona código ao editor
+        };
+
+        reader.readAsText(file);
+      }
+    });
+
+    function saveToFile() {
+      var code = editor.value;
+      var blob = new Blob([code], { type: "text/html" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "codigo.html";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function saveCodeToLocalStorage() {
+      localStorage.setItem("savedCode", editor.value);
+    }
+  </script>
+</body>
+</html>
+
+
