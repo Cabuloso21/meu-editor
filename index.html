@@ -205,6 +205,39 @@
     function saveCodeToLocalStorage() {
       localStorage.setItem("savedCode", editor.value);
     }
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  var editor = document.getElementById("editor");
+
+editor.addEventListener("input", function(event) {
+    var cursorPosition = editor.selectionStart;
+    var text = editor.value.substring(0, cursorPosition);
+
+    if (text.endsWith("<div class")) {
+        editor.value = text + '=""></div>' + editor.value.substring(cursorPosition);
+        editor.setSelectionRange(cursorPosition + 1, cursorPosition + 1);
+    } else if (text.endsWith("<span")) {
+        editor.value = text + '></span>' + editor.value.substring(cursorPosition);
+        editor.setSelectionRange(cursorPosition + 0 , cursorPosition + 0);
+      
+    } else if (text.endsWith("<style")) {
+        editor.value = text + '></style>' + editor.value.substring(cursorPosition);
+        editor.setSelectionRange(cursorPosition + 0, cursorPosition + 0);
+    } // Adicione mais casos conforme necessário
+});
+
+   
+
+  
+  
+  
   </script>
 </body>
 </html>
