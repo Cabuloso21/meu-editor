@@ -199,11 +199,16 @@
 
 
 
-<script>
-// Detecta se o usuário tenta copiar o código fonte em dispositivos móveis
-document.addEventListener('copy', function(e) {
-    e.preventDefault(); // Impede a ação padrão de copiar
-    alert('Copiar código fonte não permitido!');
+
+  <script>
+
+// Detecta se o usuário tenta copiar o código fonte
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.shiftKey && e.code === 'KeyU') {
+        // Impede a ação padrão (abrir view-source) e exibe uma mensagem
+        e.preventDefault();
+        alert('Copiar código fonte não permitido!');
+    }
 });
-</script>
+  </script>
 
