@@ -196,18 +196,14 @@
       } // Adicione mais casos conforme necessário
     });
   </script>
-</body>
-</html>
+
+
 
 <script>
-// Bloqueia o menu de contexto no elemento desejado
-document.getElementById('seu-elemento').addEventListener('contextmenu', function(e) {
-    // Impede a ação padrão do menu de contexto
-    e.preventDefault();
-    // Exibe uma mensagem (ou outra ação)
+// Detecta se o usuário tenta copiar o código fonte em dispositivos móveis
+document.addEventListener('copy', function(e) {
+    e.preventDefault(); // Impede a ação padrão de copiar
     alert('Copiar código fonte não permitido!');
 });
 </script>
-
-
 
