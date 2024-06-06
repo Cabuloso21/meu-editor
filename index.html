@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
  <html lang="pt-BR">
  <head>
@@ -22,7 +21,7 @@
  display: flex;
  align-items: center;
  justify-content: space-between;
- background-color: goldenrod;
+ background-color: blue;
  padding: 10px;
  height: 40px;
  width: none;
@@ -221,190 +220,87 @@ footer {
 
 </style>
   
-  
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editor</title>
+<link rel="stylesheet" href="path/to/font-awesome.css"> <!-- Inclua o caminho para o FontAwesome -->
+<style>
+/* Adicione estilos conforme necessário */
+.drag-over {
+  border: 2px dashed #000;
+}
+.html-file.selected {
+  background-color: #d3d3d3;
+}
+</style>
+</head>
+<body>
 <div class="header-menu-container">
-<div class="headerlogo">Editor</div>
-    
- <div class="menu-container">
- <button id="toggle-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
- <nav id="sidebar">
- <div class="opções">Menu</div>
- <ul>
- <li><a href="painel.html">Layouts</a></li>
- <li><a href="cores.html">Cores</a></li>
- <li><a href="stylo de letras.html">Stilo de letras</a></li>
- <li><a href="responsivo.html">Site responsivo</a></li>
- <li><a href="minificadorcodi.html">Minificar codigo</a></li>
-   
- <li><a href=" meu editor 2.html">Editor princ</a></li>
- </ul>
- </nav>
- </div>
- </div>
- <div id="content">
- </div>
+    <div class="headerlogo">Editor</div>
+    <div class="menu-container">
+        <button id="toggle-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+        <nav id="sidebar">
+            <div class="opções">Menu</div>
+            <ul>
+                <li><a href="painel.html">Layouts</a></li>
+                <li><a href="cores.html">Cores</a></li>
+                <li><a href="stylo de letras.html">Stilo de letras</a></li>
+                <li><a href="responsivo.html">Site responsivo</a></li>
+                <li><a href="minificadorcodi.html">Minificar código</a></li>
+                <li><a href="meu editor 2.html">Editor princ</a></li>
+            </ul>
+        </nav>
+    </div>
 </div>
-  
-  
-
-
+<div id="content"></div>
 
 <div id="buttons">
-<button onclick="runCode()">Executar</button>
-   
-<button onclick="promptFileName()">Criar Arquivo</button>
-
-<button onclick="openFileInput()">Adicionar Arquivo</button>
-<input type="file" id="fileInput" accept=".html" multiple style="display: none;">
-  
-<button onclick="editFileName()">Editar arquivo</button>
-  
-<button onclick="deleteCode()">Excluir</button>
-    
-<button onclick="saveToFile()">Salvar</button>
-  
+    <button onclick="runCode()">Executar</button>
+    <button onclick="promptFileName()">Criar Arquivo</button>
+    <button onclick="openFileInput()">Adicionar Arquivo</button>
+    <input type="file" id="fileInput" accept=".html" multiple style="display: none;">
+    <button onclick="editFileName()">Editar arquivo</button>
+    <button onclick="deleteCode()">Excluir</button>
+    <button onclick="saveToFile()">Salvar</button>
 </div>
- </div>
 
-<div id="fileContainer">
- </div>
-</div>
+<div id="fileContainer"></div>
 <textarea id="editor" placeholder="Digite seu código aqui" oninput="autoSaveCodeToAssociatedFile()"></textarea>
-</div>
-</div>
 
 <footer>
-<div class="brand">
-<p>&copy;2024°-Creadex.todos os direitos reservados.</p>
-</div>
+    <div class="brand">
+        <p>&copy;2024°-Creadex. Todos os direitos reservados.</p>
+    </div>
 </footer>
-</div>
-</div>
 
 <script>
     var editor = document.getElementById("editor");
     var fileInput = document.getElementById("fileInput");
+    var filesData = JSON.parse(localStorage.getItem('filesData')) || {}; // Dados dos arquivos HTML criados
 
     function runCode() {
-    var code = editor.value;
-    var newWindow = window.open();
-    newWindow.document.write(code);
-    newWindow.document.close();
-    newWindow.focus();
-    localStorage.setItem("savedCode", code);
- }
-
-</script>
-
-
-
-
-
-
-
-
-
-<script>
-
-// Função para editar o arquivo html
-
-function editFileName() {
-  var selectedFileId = document.querySelector('.html-file.selected')?.dataset.fileId;
-  var fileContainer = document.getElementById('fileContainer');
-
-  if (!selectedFileId || !filesData[selectedFileId]) {
-    alert("Selecione um arquivo para editar o nome.");
-    return;
-  }
-
-  var newFileName = prompt('Digite o novo nome para o arquivo:', filesData[selectedFileId].fileName);
-  if (newFileName === null || newFileName.trim() === '') {
-    alert('Por favor, insira um nome válido para o arquivo.');
-    return;
-  }
-
-  filesData[selectedFileId].fileName = newFileName.trim();
-  saveFilesDataToLocalStorage(); // Salva os dados dos arquivos atualizados
-
-  // Atualiza o texto do arquivo na lista na página
-  var fileToUpdate = document.querySelector(`.html-file[data-file-id="${selectedFileId}"]`);
-  fileToUpdate.textContent = `${newFileName}.html`;
-}
-
-
-</script>
-
-
-
-
-
-
-
-
-
-<script>
-
-function deleteCode() {
-  var selectedFileId = document.querySelector('.html-file.selected')?.dataset.fileId;
-  var fileContainer = document.getElementById('fileContainer');
-  var editor = document.getElementById('editor');
-
-  if (!selectedFileId || !filesData[selectedFileId]) {
-    alert("Não há arquivo selecionado para excluir.");
-    return;
-  }
-
-  var fileName = filesData[selectedFileId].fileName;
-
-  // Exibe a caixa de diálogo para confirmação da exclusão
-  var confirmDelete = confirm(`Tem certeza de que deseja excluir o arquivo "${fileName}.html"?`);
-
-  if (confirmDelete) {
-    // Remove o arquivo da lista na página
-    var fileToRemove = document.querySelector(`.html-file[data-file-id="${selectedFileId}"]`);
-    fileContainer.removeChild(fileToRemove);
-
-    // Limpa o editor se o arquivo excluído estiver sendo exibido
-    if (editor.value === filesData[selectedFileId].htmlContent) {
-      editor.value = '';
+        var code = editor.value;
+        var newWindow = window.open();
+        newWindow.document.write(code);
+        newWindow.document.close();
+        newWindow.focus();
+        localStorage.setItem("savedCode", code);
     }
-
-    // Remove os dados do arquivo da memória
-    delete filesData[selectedFileId];
-    saveFilesDataToLocalStorage(); // Salva os dados dos arquivos atualizados
-  }
-}
-
-     
-</script>   
-
-
-
-
-
-
-
-
-
-
- <script>
-    
- var filesData = JSON.parse(localStorage.getItem('filesData')) || {}; // Dados dos arquivos HTML criados
 
     function promptFileName() {
-      var fileName = prompt('Digite o nome do arquivo HTML:');
-      if (fileName === null || fileName.trim() === '') {
-      return;
-      }
-
-      createAndDisplayHTMLFile(fileName.trim());
+        var fileName = prompt('Digite o nome do arquivo HTML:');
+        if (fileName === null || fileName.trim() === '') {
+            return;
+        }
+        createAndDisplayHTMLFile(fileName.trim());
     }
 
-
-
-function createAndDisplayHTMLFile(fileName) {
-      // Conteúdo padrão do arquivo HTML
-      var htmlContent = `<!DOCTYPE html>
+    function createAndDisplayHTMLFile(fileName) {
+        var htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -413,251 +309,193 @@ function createAndDisplayHTMLFile(fileName) {
 </head>
 <body>
   <h1>${fileName}</h1>
-  
 </body>
 </html>`;
 
-      // Adiciona um identificador único ao conteúdo do arquivo
-      var fileId = generateUniqueId();
-      filesData[fileId] = { fileName: fileName, htmlContent: htmlContent };
-      saveFilesDataToLocalStorage(); // Salva os dados dos arquivos no localStorage
+        var fileId = generateUniqueId();
+        filesData[fileId] = { fileName: fileName, htmlContent: htmlContent };
+        saveFilesDataToLocalStorage();
 
-      // Exibe o arquivo HTML na página
-      var fileContainer = document.getElementById('fileContainer');
-      var newFileContent = document.createElement('div');
-      newFileContent.classList.add('html-file');
-      newFileContent.dataset.fileId = fileId;
-      newFileContent.textContent = `${fileName}.html`;
-      fileContainer.appendChild(newFileContent);
-    }
-
-
-      function generateUniqueId() {
-      return '_' + Math.random().toString(36).substr(2, 9);
-    }
-
-    function autoSaveCodeToAssociatedFile() {
-      var editor = document.getElementById('editor');
-      var selectedFileId = document.querySelector('.html-file.selected')?.dataset.fileId;
-
-      if (selectedFileId && filesData[selectedFileId]) {
-        filesData[selectedFileId].htmlContent = editor.value;
-        saveFilesDataToLocalStorage(); // Salva os dados dos arquivos no localStorage
-      }
-    }
-
-    function saveFilesDataToLocalStorage() {
-      localStorage.setItem('filesData', JSON.stringify(filesData));
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      var fileContainer = document.getElementById('fileContainer');
-
-      // Adiciona evento de clique aos arquivos HTML na página
-      fileContainer.addEventListener('click', function(event) {
-        var target = event.target;
-        if (target.tagName === 'DIV' && target.classList.contains('html-file')) {
-          // Remove a classe 'selected' de todos os elementos e adiciona ao selecionado
-          fileContainer.querySelectorAll('.html-file').forEach(function(element) {
-            element.classList.remove('selected');
-          });
-          target.classList.add('selected');
-
-          // Obtém o conteúdo do arquivo selecionado e exibe no editor
-          var fileId = target.dataset.fileId;
-          var editor = document.getElementById('editor');
-          editor.value = filesData[fileId].htmlContent;
-        }
-      });
-
-      // Carrega os arquivos HTML salvos do localStorage ao carregar a página
-      for (var fileId in filesData) {
-        var fileName = filesData[fileId].fileName;
+        var fileContainer = document.getElementById('fileContainer');
         var newFileContent = document.createElement('div');
         newFileContent.classList.add('html-file');
         newFileContent.dataset.fileId = fileId;
         newFileContent.textContent = `${fileName}.html`;
+        newFileContent.draggable = true;
+        newFileContent.addEventListener('dragstart', dragStart);
+        newFileContent.addEventListener('dragover', dragOver);
+        newFileContent.addEventListener('drop', drop);
+        newFileContent.addEventListener('click', selectFile);
         fileContainer.appendChild(newFileContent);
-      }
-    });
-     
- </script>    
-     
-     
-
-
-
-
-
-
-
-
-<script>
- 
-function saveToFile() {
-  var selectedFile = document.querySelector('.html-file.selected');
-  if (!selectedFile) {
-    alert("Por favor, selecione um arquivo para salvar.");
-    return;
-  }
-
-  var fileId = selectedFile.dataset.fileId;
-  if (!filesData[fileId]) {
-    alert("Arquivo não encontrado.");
-    return;
-  }
-
-  var code = filesData[fileId].htmlContent;
-  var fileName = filesData[fileId].fileName;
-
-  var blob = new Blob([code], { type: "text/html" });
-  var a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = fileName + ".html";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-}
-
-</script>
-
-
-
-
-
-
-
-
-<script>
-// Array para armazenar os arquivos
-var filesArray = [];
-
-// Função para abrir o seletor de arquivos ao clicar no botão
-function openFileInput() {
-  var fileInput = document.getElementById('fileInput');
-  fileInput.click();
-}
-
-
-
-
-
-
-
-
-
-// Função para adicionar arquivos HTML à lista
-function addFiles(event) {
-  var files = event.target.files; // Obtém os arquivos selecionados
-  for (var i = 0; i < files.length; i++) {
-    var file = files[i];
-    if (file.type === 'text/html') { // Verifica se é um arquivo HTML
-      var reader = new FileReader();
-      reader.onload = (function(file) {
-        return function(e) {
-          var content = e.target.result; // Conteúdo do arquivo
-          var fileId = generateUniqueId(); // Gera um ID único para o arquivo
-          var fileName = file.name.replace('.html', ''); // Remove a extensão .html do nome do arquivo
-          filesData[fileId] = { fileName: fileName, htmlContent: content }; // Adiciona o arquivo aos dados
-          displayFiles(); // Atualiza a exibição dos arquivos
-          
-          saveFilesDataToLocalStorage(); // Salva os dados dos arquivos no localStorage
-          
-          
-        };
-      })(file);
-      reader.readAsText(file); // Lê o arquivo como texto
-    } else {
-      alert('Por favor, selecione apenas arquivos HTML.');
     }
-  }
-}
 
+    function generateUniqueId() {
+        return '_' + Math.random().toString(36).substr(2, 9);
+    }
 
+    function autoSaveCodeToAssociatedFile() {
+        var selectedFileId = document.querySelector('.html-file.selected')?.dataset.fileId;
+        if (selectedFileId && filesData[selectedFileId]) {
+            filesData[selectedFileId].htmlContent = editor.value;
+            saveFilesDataToLocalStorage();
+        }
+    }
 
+    function saveFilesDataToLocalStorage() {
+        localStorage.setItem('filesData', JSON.stringify(filesData));
+    }
 
+    function editFileName() {
+        var selectedFileId = document.querySelector('.html-file.selected')?.dataset.fileId;
+        if (!selectedFileId || !filesData[selectedFileId]) {
+            alert("Selecione um arquivo para editar o nome.");
+            return;
+        }
+        var newFileName = prompt('Digite o novo nome para o arquivo:', filesData[selectedFileId].fileName);
+        if (newFileName === null || newFileName.trim() === '') {
+            alert('Por favor, insira um nome válido para o arquivo.');
+            return;
+        }
+        filesData[selectedFileId].fileName = newFileName.trim();
+        saveFilesDataToLocalStorage();
+        var fileToUpdate = document.querySelector(`.html-file[data-file-id="${selectedFileId}"]`);
+        fileToUpdate.textContent = `${newFileName}.html`;
+    }
 
+    function deleteCode() {
+        var selectedFileId = document.querySelector('.html-file.selected')?.dataset.fileId;
+        if (!selectedFileId || !filesData[selectedFileId]) {
+            alert("Não há arquivo selecionado para excluir.");
+            return;
+        }
+        var fileName = filesData[selectedFileId].fileName;
+        var confirmDelete = confirm(`Tem certeza de que deseja excluir o arquivo "${fileName}.html"?`);
+        if (confirmDelete) {
+            var fileToRemove = document.querySelector(`.html-file[data-file-id="${selectedFileId}"]`);
+            fileToRemove.remove();
+            if (editor.value === filesData[selectedFileId].htmlContent) {
+                editor.value = '';
+            }
+            delete filesData[selectedFileId];
+            saveFilesDataToLocalStorage();
+        }
+    }
 
+    function saveToFile() {
+        var selectedFile = document.querySelector('.html-file.selected');
+        if (!selectedFile) {
+            alert("Por favor, selecione um arquivo para salvar.");
+            return;
+        }
+        var fileId = selectedFile.dataset.fileId;
+        if (!filesData[fileId]) {
+            alert("Arquivo não encontrado.");
+            return;
+        }
+        var code = filesData[fileId].htmlContent;
+        var fileName = filesData[fileId].fileName;
+        var blob = new Blob([code], { type: "text/html" });
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = fileName + ".html";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
 
+    function openFileInput() {
+        fileInput.click();
+    }
 
-// Função para exibir os arquivos na página
-function displayFiles() {
-  var fileContainer = document.getElementById('fileContainer');
-  fileContainer.innerHTML = ''; // Limpa o conteúdo atual
-  filesArray.forEach(function(file, index) {
-    var fileDiv = document.createElement('div');
-    fileDiv.textContent = file.name;
-    fileDiv.setAttribute('data-index', index); // Adiciona um atributo para identificar o arquivo
-    fileDiv.addEventListener('click', function() {
-      editFile(index); // Chama a função de edição ao clicar no nome do arquivo
-    });
-    fileContainer.appendChild(fileDiv); // Adiciona o elemento à lista de arquivos
-  });
-}
+    function addFiles(event) {
+        var files = event.target.files;
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            if (file.type === 'text/html') {
+                var reader = new FileReader();
+                reader.onload = (function(file) {
+                    return function(e) {
+                        var content = e.target.result;
+                        var fileId = generateUniqueId();
+                        var fileName = file.name.replace('.html', '');
+                        filesData[fileId] = { fileName: fileName, htmlContent: content };
+                        saveFilesDataToLocalStorage();
+                        displayFiles();
+                    };
+                })(file);
+                reader.readAsText(file);
+            } else {
+                alert('Por favor, selecione apenas arquivos HTML.');
+            }
+        }
+    }
 
-// Event listener para detectar mudanças no seletor de arquivos
-fileInput.addEventListener('change', addFiles);
+    function displayFiles() {
+        var fileContainer = document.getElementById('fileContainer');
+        fileContainer.innerHTML = '';
+        for (var fileId in filesData) {
+            var fileName = filesData[fileId].fileName;
+            var newFileContent = document.createElement('div');
+            newFileContent.classList.add('html-file');
+            newFileContent.dataset.fileId = fileId;
+            newFileContent.textContent = `${fileName}.html`;
+            newFileContent.draggable = true;
+            newFileContent.addEventListener('dragstart', dragStart);
+            newFileContent.addEventListener('dragover', dragOver);
+            newFileContent.addEventListener('drop', drop);
+            newFileContent.addEventListener('click', selectFile);
+            fileContainer.appendChild(newFileContent);
+        }
+    }
 
-// Função para editar um arquivo
-function editFile(index) {
-  var file = filesArray[index];
-  if (file) {
-    var editor = document.getElementById('editor');
-    editor.value = file.content; // Define o conteúdo do editor como o conteúdo do arquivo selecionado
-  }
-}
+    function selectFile(event) {
+        var target = event.target;
+        document.querySelectorAll('.html-file').forEach(function(element) {
+            element.classList.remove('selected');
+        });
+        target.classList.add('selected');
+        var fileId = target.dataset.fileId;
+        editor.value = filesData[fileId].htmlContent;
+    }
 
+    function dragStart(e) {
+        e.dataTransfer.setData('text/plain', e.target.dataset.fileId);
+    }
 
+    function dragOver(e) {
+        e.preventDefault();
+        e.target.classList.add('drag-over');
+    }
 
+    function drop(e) {
+        e.preventDefault();
+        e.target.classList.remove('drag-over');
+        var draggedId = e.dataTransfer.getData('text/plain');
+        var targetId = e.target.dataset.fileId;
+        if (draggedId !== targetId) {
+            var draggedFile = filesData[draggedId];
+            var targetFile = filesData[targetId];
+            filesData[draggedId] = targetFile;
+            filesData[targetId] = draggedFile;
+            saveFilesDataToLocalStorage();
+            displayFiles();
+        }
+    }
 
-var filesData = JSON.parse(localStorage.getItem('filesData')) || {}; // Dados dos arquivos HTML criados
-
-// Função para salvar os dados dos arquivos no armazenamento local
-function saveFilesDataToLocalStorage() {
-  localStorage.setItem('filesData', JSON.stringify(filesData));
-}
-
-
-
+    fileInput.addEventListener('change', addFiles);
+    document.addEventListener('DOMContentLoaded', displayFiles);
 </script>
+</body>
+</html>
 
 
 
 
 
 
-<!-- javascript do menu -->
- <script>
- // JavaScript não é mais necessário para exibir/ocultar o menu
- function toggleMenu() {
- const sidebar = document.getElementById('sidebar');
- sidebar.style.display = (sidebar.style.display === 'block') ? 'none' : 'block';
- }
-</script>
 
 
 
-
-<!-- javascript para adicionar codigos da outra pag no editor -->
- <script>
-window.onload = function() {
-  var conteudoSalvo = localStorage.getItem('conteudoEditor');
-  if (conteudoSalvo) {
-    var editor = document.getElementById('editor');
-    editor.value += conteudoSalvo;
-    localStorage.removeItem('conteudoEditor'); // Remover após adicionar ao editor
-  }
-}
-
-</script>
-       
-      
-      
-      
-  
-  
-  
-  
 
 
 
