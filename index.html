@@ -9,15 +9,12 @@
  </head>
   
 <style>
-
  body {
  margin: 0px;
  font-family: Arial, sans-serif;
 }
    
- 
-
- .header-menu-container {
+.header-menu-container {
  display: flex;
  align-items: center;
  justify-content: space-between;
@@ -28,9 +25,7 @@
  top: 0px;
  z-index: 10px;
  
- 
-    
- }
+}
     
  .menu-container {
  display: flex;
@@ -485,10 +480,18 @@ footer {
     fileInput.addEventListener('change', addFiles);
     document.addEventListener('DOMContentLoaded', displayFiles);
 </script>
-</body>
+
+
+<!-- javascript do menu -->
+ <script>
+ // JavaScript não é mais necessário para exibir/ocultar o menu
+ function toggleMenu() {
+ const sidebar = document.getElementById('sidebar');
+ sidebar.style.display = (sidebar.style.display === 'block') ? 'none' : 'block';
+ }
+</script>
+ </body>
 </html>
-
-
 
 
 
