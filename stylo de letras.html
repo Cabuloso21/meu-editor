@@ -1,0 +1,345 @@
+
+ <!DOCTYPE html>
+ <html lang="pt-BR">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Meu Editor Principal</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ </head>
+  
+ <style>
+ body {
+ margin: 0px;
+ font-family: Arial, sans-serif;
+}
+
+ header {
+ background: goldenrod;
+ padding: 15px;
+
+}
+
+ .logo {
+ color: #333;
+ font-size: 25px;
+ font-weight: bold;
+ margin-top: 0px;
+ margin-left: 5px;
+
+}
+
+ .text {
+ color: Black;
+ font-size: 25px;
+ font-weight: bold;
+ margin-top: 20px;
+ margin-left: none;
+ margin-bottom: 40px;
+ text-align: center;
+ border-bottom: 1px solid silver;
+ padding: 5px;
+}
+
+.fontStyle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0px;
+    color: #333;
+    font-weight: none;
+    margin-left: 15px;
+    margin-top: 0px;
+ 
+ }
+ 
+ .copyButton {
+    margin-left: 10px;
+    background: white;
+    color: Black;
+    border: 1px solid  goldenrod;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+   margin-right: 15px;
+  
+  }  
+  
+ .font {
+ color: goldenrod;
+ font-size: 17px;
+ font-weight: bold;
+ margin-top: 20px;
+ margin-left: 15px;
+
+}
+   
+ footer {
+ background-color: #666;
+ padding: 1px;
+ margin-top: 100px;
+ border-bottom: 1px solid white; 
+    
+ }
+  
+ .brand p {
+ font-size: 15.20px;
+ color: silver;
+ margin-top: 30px;
+ text-align: absolute;
+ margin-left: 25px;
+  
+ }
+  
+
+
+</style>
+
+ <header>
+ <div class="logo">Lopixe</div>
+ </header>
+    
+    <div class="text">Estilos de letras</div>
+    </div>
+  </div>
+
+<div class="font">Fonte padrão</div>
+
+<div id="fontStyles">
+    <div class="fontStyle">
+      <span>font-family: Arial, sans-serif</span>
+      <button class="copyButton" onclick="copyToClipboard('Arial, sans-serif')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+  
+  
+  
+<div class="font">Fonte serif</div>
+
+  
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>font-family: Times New Roman, serif;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('Times New Roman, serif')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+
+  
+  
+<div class="font">Fonte monoespaçada</div>
+
+ <div id="fontStyles">
+    <div class="fontStyle">
+      <span>font-family: Courier New, monospace;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('Courier New, monospace;')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+  
+  
+
+
+  
+  
+
+
+
+<div class="font">Fonte Roboto</div>
+
+<div id="fontStyles">
+    <div class="fontStyle">
+      <span>font-family: Roboto, sans-serif;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('Roboto, sans-serif;')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+  
+
+
+<div class="font">Fonte Open sans</div>
+ 
+<div id="fontStyles">
+    <div class="fontStyle">
+      <span>font-family: Open Sans, sans-serif;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('Open Sans, sans-serif;')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+
+  
+  
+  <div class="font">Fonte Lato</div>
+
+<div id="fontStyles">
+    <div class="fontStyle">
+      <span>font-family: Lato, sans-serif;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('Lato, sans-serif;')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+
+  
+  
+  
+<div class="font">Fonte Montserrat</div>
+
+<div id="fontStyles">
+    <div class="fontStyle">
+      <span>font-family: Montserrat, sans-serif;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('Montserrat, sans-serif;')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+<div class="font">Fonte Pacifico</div>
+
+ <div id="fontStyles">
+    <div class="fontStyle">
+      <span>font-family: Pacifico, cursive;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('Pacifico, cursive;')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+  
+  
+  
+<div class="font">Fonte Lobster</div>
+
+ <div id="fontStyles">
+    <div class="fontStyle">
+      <span>font-family: Lobster, cursive;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('Lobster, cursive;')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+  
+  
+  
+  
+<div class="font">Fonte Ubuntu</div>
+
+  
+   <div id="fontStyles">
+    <div class="fontStyle">
+      <span>font-family: Ubuntu, sans-serif;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('Ubuntu, sans-serif;')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+  
+  
+  
+
+<div class="font">Fonte Nunito</div>
+
+<div id="fontStyles">
+    <div class="fontStyle">
+      <span>font-family: Nunito, sans-serif;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('Nunito, sans-serif;')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  <div class="font">Fonte Poppins</div>
+
+<div id="fontStyles">
+    <div class="fontStyle">
+      <span>font-family: Poppins, sans-serif;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('Poppins, sans-serif;')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+<div class="font">Fonte Playfair display</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>font-family: Playfair Display, serif;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('Playfair Display, serif;')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+  
+  
+  <div class="font">Fonte Italico</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>font-style: italic;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('italic')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+  
+  
+  
+ <footer>
+<div class="brand">
+<p>&copy;2024°-Lopixe.todos os direitos reservados.</p>
+</div>
+</footer>
+</div>
+  
+  
+  
+  
+  
+  
+  <script>
+    function copyToClipboard(text) {
+      const tempInput = document.createElement('input');
+      tempInput.value = `font-family: ${text};`;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      alert('Código copiado para a área de transferência!');
+    }
+  </script>
+</body>
+</html>
+  
+  
+  
+  
+ 
+
+
+

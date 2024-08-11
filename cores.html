@@ -1,0 +1,608 @@
+
+ <!DOCTYPE html>
+ <html lang="pt-BR">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Meu Editor Principal</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ </head>
+  
+ <style>
+ body {
+ margin: 0px;
+ font-family: Arial, sans-serif;
+}
+
+ header {
+ background: goldenrod;
+ padding: 15px;
+
+}
+
+ .logo {
+ color: #333;
+ font-size: 25px;
+ font-weight: bold;
+ margin-top: 0px;
+ margin-left: 5px;
+
+}
+
+ .cores {
+ color: Black;
+ font-size: 25px;
+ font-weight: bold;
+ margin-top: 20px;
+ margin-left: none;
+ margin-bottom: 40px;
+ text-align: center;
+ border-bottom: 1px solid silver;
+ padding: 5px;
+}
+
+.fontStyle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0px;
+    color: #333;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: 0px;
+ 
+ }
+ 
+ .copyButton {
+    margin-left: 10px;
+    background: white;
+    color: #444;
+    border: 1px solid orange;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+   margin-right: 15px;
+  
+  }  
+  
+ .text {
+ color: goldenrod;
+ font-size: 17px;
+ font-weight: bold;
+ margin-top: 20px;
+ margin-left: 15px;
+   
+ }
+  
+  footer {
+ background-color: #666;
+ padding: 1px;
+ margin-top: 100px;
+ border-bottom: 1px solid white; 
+    
+ }
+  
+ .brand p {
+ font-size: 15.20px;
+ color: silver;
+ margin-top: 30px;
+ text-align: absolute;
+ margin-left: 25px;
+  
+ }
+  
+ </style>
+
+    <header>
+      <div class="logo">Lopixe</div>
+    </header>
+    
+    <div class="cores">Fonte de Cores</div>
+    
+<div class="text">vermelho</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: red;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('red')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+  
+
+
+
+<div class="text">Verde</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: green;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('green')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+  
+  
+<div class="text">Azul</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: blue;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('blue')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+
+<div class="text">Amarelo</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: yellow;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('yellow')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+  
+  <div class="text">Rosa</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: pink;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('pink')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+  
+<div class="text">Laranja</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: orange;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('orange')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+  
+<div class="text">Roxo</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: purple;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('purple')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+
+<div class="text">Marron</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: brown;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('brown')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+  
+
+<div class="text">Cinza</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: gray;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('gray')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+  
+
+ 
+  <div class="text">Preto</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: black;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('black')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+  
+
+ <div class="text">Prata</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: silver;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('silver')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+
+
+<div class="text">Dourado</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: gold;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('gold')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+
+<div class="text">Ciano</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: cyan;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('cyan')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+ 
+
+<div class="text">Magenta</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: magenta;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('magenta')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+ 
+
+<div class="text">Turquesa</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: turquoise;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('turquoise')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+ 
+  
+<div class="text">Lavanda</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: lavender;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('lavender')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+ 
+  <div class="text">Coral</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: coral;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('coral')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+ 
+<div class="text">Índigo</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: indigo;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('indigo')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+ 
+  <div class="text">Verde limão</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: limegreen;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('limegreen')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+ 
+  
+<div class="text">Azul celeste</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: lightblue;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('lightblue')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+
+<div class="text">Azul escuro</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: darkblue;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('darkblue')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+
+
+
+<div class="text">Azul marinho</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: navy;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('navy')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+
+
+
+
+
+
+
+
+
+<div class="text">Verde Água</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: aquamarine;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('aquamarine')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+
+<div class="text">Cinza claro</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: lightgray;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('lightgray')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+  
+ 
+<div class="text">Amarelo claro</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: lightyellow;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('lightyellow')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+  
+
+
+<div class="text">Verde escuro</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: darkred;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('darkred')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+
+
+<div class="text">Rosa pálido</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: lightpink;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('lightpink')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+
+
+<div class="text">Laranja escuro</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: darkorange;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('darkorange')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+
+
+  <div class="text">Roxo escuro</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: darkpurple;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('darkpurple')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+
+
+<div class="text">Marrom claro</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: tan;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('tan')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+
+ 
+<div class="text">Verde oliva</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: olive;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('olive')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+
+ 
+<div class="text">Vermelho salmão</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: salmon;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('salmon')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+
+<div class="text">Verde mar</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: seagreen;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('seagreen')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+
+
+<div class="text">Azul céu</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: skyblue;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('skyblue')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+
+
+<div class="text">Amarelo dourado</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: goldenrod;</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('goldenrod')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+
+<div class="text">Rosa coral</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: coral</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('coral')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+
+
+<div class="text">Cinza prateado</div>
+
+  <div id="fontStyles">
+    <div class="fontStyle">
+      <span>color: silvergray</span>
+      
+      <button class="copyButton" onclick="copyToClipboard('silvergray')">Copiar</button>
+    </div>
+    <!-- Adicione os outros estilos de fonte com seus botões de cópia -->
+  </div>
+ 
+
+  <footer>
+
+<div class="brand">
+<p>&copy;2024°-Lopixe.todos os direitos reservados.</p>
+</div>
+</footer>
+</div>
+
+
+
+
+  <script>
+    function copyToClipboard(text) {
+      const tempInput = document.createElement('input');
+      tempInput.value = `color: ${text};`;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      alert('Código copiado para a área de transferência!');
+    }
+  </script>
+</body>
+</html>
+  
+  
+  
+  
+ 
